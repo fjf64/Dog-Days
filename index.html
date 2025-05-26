@@ -2,9 +2,18 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Days</title>
+
+
 
     <style>
         * {
@@ -16,6 +25,8 @@
         div {
             border-style: solid;
             border-color: white;
+            /* border-right-style: none; */
+            /* border-bottom-style: none; */
             /* border-radius: 5%; */
             border-width: 1%;
             height: 90%;
@@ -25,14 +36,45 @@
             padding-right: 1%;
             width: 45%;
         }
+
+        @font-face {
+            font-family: "Amstelvar VF";
+            src: url("https://mdn.github.io/shared-assets/fonts/variable-fonts/AmstelvarAlpha-VF.woff2") format("woff2-variations");
+            font-weight: 300 900;
+            font-stretch: 35% 100%;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Roboto", sans-serif;
+            src: url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 50;
+        }
+
+        h1 {
+            /* font-size: 100%; */
+            font:
+                1.2em "Roboto",
+                "Amstelvar VF",
+                serif;
+            font-size: 2rem;
+            font-variation-settings: "wght" 150;
+            /* margin: 1rem; */
+            display: inline-block;
+        }
     </style>
 </head>
 
 <body>
-    <div style="float: left;">
+    <div style="float: left;border-right-style: none;border-bottom-style: none;">
         <h1 id="daysSince"></h1>
     </div>
-    <div style="float: right;">
+    <div style="float: right;border-left-style: none;border-bottom-style: none;">
         <h1 id="daysLeft"></h1>
     </div>
 
@@ -62,8 +104,8 @@
             // var dateNowParsed = Date.parse(dateNow)
             var daysSinceItem = document.getElementById('daysSince')
             var daysLeftItem = document.getElementById('daysLeft')
-            daysSinceItem.innerHTML = "vacation started:<br>"
-            daysLeftItem.innerHTML = "vacation ends:<br>"
+            daysSinceItem.innerHTML = "vacation duration:<br>"
+            daysLeftItem.innerHTML = "vacation ends in:<br>"
             var dateStart = 'May 21, 2025 14:00:00'
             var dateEnd = 'August 21, 2025 8:30:00'
 
