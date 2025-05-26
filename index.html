@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dog Days</title>
+
+    <style>
+        * {
+            background: black;
+            color: white;
+            /* text-align: center; */
+        }
+
+        div {
+            border-style: solid;
+            border-color: white;
+            /* border-radius: 5%; */
+            border-width: 1%;
+            height: 90%;
+            margin-left: 0%;
+            margin-right: 0%;
+            padding-left: 1%;
+            padding-right: 1%;
+            width: 45%;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div style="float: left;">
+        <h1 id="daysSince"></h1>
+    </div>
+    <div style="float: right;">
+        <h1 id="daysLeft"></h1>
+    </div>
+
+
+    <script>
+        function TimeDifference(a, b) {
+            var returnal = {
+                seconds: 0,
+                minutes: 0,
+                hours: 0,
+                days: 0,
+                weeks: 0
+            }
+            var parsedA = Date.parse(a)
+            var parsedB = Date.parse(b)
+            var timeDifference = parsedA - parsedB
+            returnal.weeks = Math.floor(timeDifference / 604800000)
+            returnal.days = Math.floor((timeDifference % 604800000) / 86400000)
+            returnal.hours = Math.floor((timeDifference % 604800000 % 86400000) / 3600000)
+            returnal.minutes = Math.floor((timeDifference % 604800000 % 86400000 % 3600000) / 60000)
+            returnal.seconds = Math.floor((timeDifference % 604800000 % 86400000 % 3600000 % 60000) / 1000)
+            return returnal
+        }
+        function Main() {
+
+            var dateNow = new Date()
+            // var dateNowParsed = Date.parse(dateNow)
+            var daysSinceItem = document.getElementById('daysSince')
+            var daysLeftItem = document.getElementById('daysLeft')
+            daysSinceItem.innerHTML = "vacation started:<br>"
+            daysLeftItem.innerHTML = "vacation ends:<br>"
+            var dateStart = 'May 22, 2025 14:00:00'
+            var dateEnd = 'August 21, 2025 8:30:00'
+
+            //SINCE
+            var timeSince = TimeDifference(dateNow, dateStart)
+            for (let key of Object.keys(timeSince).reverse()) {
+                if (timeSince[key] !== 0) {
+                    daysSinceItem.innerHTML += "<ul>" + timeSince[key] + " " + key + "<br>"
+                }
+            }
+
+            //LEFT
+            var timeLeft = TimeDifference(dateEnd, dateNow)
+            for (let key of Object.keys(timeLeft).reverse()) {
+                if (timeLeft[key] !== 0) {
+                    daysLeftItem.innerHTML += "<ul>" + timeLeft[key] + " " + key + "<br>"
+                }
+            }
+        }
+        setInterval(Main, 1000)
+    </script>
 </body>
+
 </html>
