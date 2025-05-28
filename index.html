@@ -104,8 +104,8 @@
             // var dateNowParsed = Date.parse(dateNow)
             var daysSinceItem = document.getElementById('daysSince')
             var daysLeftItem = document.getElementById('daysLeft')
-            daysSinceItem.innerHTML = "vacation duration:<br>"
-            daysLeftItem.innerHTML = "vacation ends in:<br>"
+            daysSinceItem.innerHTML = "vacation duration:<br><br>"
+            daysLeftItem.innerHTML = "vacation ends in:<br><br>"
             var dateStart = 'May 21, 2025 14:00:00'
             var dateEnd = 'August 21, 2025 8:30:00'
 
@@ -113,7 +113,7 @@
             var timeSince = TimeDifference(dateNow, dateStart)
             for (let key of Object.keys(timeSince).reverse()) {
                 if (timeSince[key] !== 0) {
-                    daysSinceItem.innerHTML += timeSince[key] + " " + key + "<br>"
+                    daysSinceItem.innerHTML += timeSince[key] + " " + key + "<br><br>"
                 }
             }
 
@@ -121,7 +121,7 @@
             var timeLeft = TimeDifference(dateEnd, dateNow)
             for (let key of Object.keys(timeLeft).reverse()) {
                 if (timeLeft[key] !== 0) {
-                    daysLeftItem.innerHTML += timeLeft[key] + " " + key + "<br>"
+                    daysLeftItem.innerHTML += timeLeft[key] + " " + key + "<br><br>"
                 }
             }
         }
